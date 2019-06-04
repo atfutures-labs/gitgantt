@@ -1,0 +1,16 @@
+Package: gitgantt
+Title: Create Gantt Charts with GitHub Issues and R
+Version: 0.0.0.9000
+Authors@R: 
+   person("Robin", "Lovelace", email = "rob00x@gmail.com", role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0001-5679-6536"))
+Description: Downloads GitHub issues that have GanttStart and GanttDue tags and converts them into Gantt charts.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    gh,
+    stringi,
+    purrr,
+    tibble
+RoxygenNote: 6.1.1
