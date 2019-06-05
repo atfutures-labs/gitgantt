@@ -26,7 +26,7 @@ Solution: add lines containing `GanttStart: ` and `GanttDue: ` to your issues an
 
 ```{r example}
 library(gitgantt)
-# gg_gantt(repo = "")
+gg_timevis(owner = "ATFutures", repo = "who3")
 ```
 
 ## Installation
