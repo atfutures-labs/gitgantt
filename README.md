@@ -19,8 +19,8 @@ chart in a single line of code\!
 
 ``` r
 library(gitgantt)
-gg_timevis(owner = "ATFutures", repo = "who3")
-#> 5 issues returned for the repo who3
+gg_timevis(owner = "robinlovelace", repo = "gitgantt")
+#> 3 issues returned for the repo gitgantt
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
