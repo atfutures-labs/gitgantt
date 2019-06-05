@@ -23,6 +23,7 @@ Extract dates from gh issues
 \examples{
 issue_body = "GanttStart: 2019-09-01\\r\\nGanttDue: 2019-10-01"
 gg_extract_dates(issue_body)
+issue_body = c(issue_body, "No gantt", "GanttStart: 2019-09-01\\r\\nOther comment")
 gg_start_date(issue_body)
 gg_due_date(issue_body)
 }

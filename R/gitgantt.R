@@ -26,7 +26,8 @@ gg_issue_df = function(issue_list) {
   tibble::tibble(
         number = purrr::map_int(issue_list, "number"),
         title = purrr::map_chr(issue_list, "title"),
-        description = purrr::map_chr(issue_list, "body"),
+        body = purrr::map_chr(issue_list, "body"),
+
         state = purrr::map_chr(issue_list, "state"),
         created_at = as.Date(purrr::map_chr(issue_list, "created_at"))
   )
@@ -40,22 +41,26 @@ gg_issue_df = function(issue_list) {
 #' @examples
 #' issue_body = "GanttStart: 2019-09-01\r\nGanttDue: 2019-10-01"
 #' gg_extract_dates(issue_body)
+#' issue_body = c(issue_body, "No gantt", "GanttStart: 2019-09-01\r\nOther comment")
 #' gg_start_date(issue_body)
 #' gg_due_date(issue_body)
 gg_extract_dates = function(issue_body, pattern = "GanttStart: |GanttDue: ") {
   body_lines = stringi::stri_split_lines1(issue_body)
   body_date_strings = body_lines[grepl(pattern = pattern, body_lines)]
-  as.Date(gsub(pattern = pattern, replacement = "", body_date_strings))
+  if(length(body_date_strings) == 0) {
+    return(NA)
+  }
+  gsub(pattern = pattern, replacement = "", body_date_strings)
 }
 #' @rdname gg_extract_dates
 #' @export
 gg_start_date = function(issue_body) {
-  gg_extract_dates(issue_body, pattern = "GanttStart: ")
+  purrr::map_chr(issue_body, gg_extract_dates, pattern = "GanttStart: ")
 }
 #' @rdname gg_extract_dates
 #' @export
 gg_due_date = function(issue_body) {
-  gg_extract_dates(issue_body, pattern = "GanttDue: ")
+  purrr::map_chr(issue_body, gg_extract_dates, pattern = "GanttDue: ")
 }
 # # code to extract start times ---------------------------------------------
 #
