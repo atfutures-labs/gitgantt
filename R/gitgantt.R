@@ -88,11 +88,13 @@ gg_timevis = function(issue_df = NULL, owner, repo) {
   timevis_df = timevis_df[order(timevis_df$start, decreasing = FALSE), ]
   timevis_df$id = 1:nrow(timevis_df)
   timevis_df$order = nrow(timevis_df):1
-  timevis_df$groups = 1:nrow(timevis_df)
-  g = tibble::tibble(id = 1:nrow(timevis_df), content = timevis_df$content)
-  timevis::timevis(data = timevis_df
-                   # , groups = g
-                   )
+  timevis_df$group = timevis_df$id
+  g = tibble::tibble(
+    id = 1:nrow(timevis_df),
+    # content = timevis_df$content
+    content = 1
+    )
+  timevis::timevis(data = timevis_df, groups = g)
 }
 # extract_start_date = function(x) {
 #
