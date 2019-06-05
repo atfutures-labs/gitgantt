@@ -27,7 +27,8 @@ gg_issue_df = function(issue_list) {
         number = purrr::map_int(issue_list, "number"),
         title = purrr::map_chr(issue_list, "title"),
         body = purrr::map_chr(issue_list, "body"),
-
+        start_date = gg_start_date(body),
+        due_date = gg_due_date(body),
         state = purrr::map_chr(issue_list, "state"),
         created_at = as.Date(purrr::map_chr(issue_list, "created_at"))
   )
@@ -62,13 +63,7 @@ gg_start_date = function(issue_body) {
 gg_due_date = function(issue_body) {
   purrr::map_chr(issue_body, gg_extract_dates, pattern = "GanttDue: ")
 }
-# # code to extract start times ---------------------------------------------
-#
-# task_df$description[1]
-# stringi::stri_split_lines(task_df$description[1])
-# stringi::stri_split_lines(task_df$description[1])[[1]]
-# stringi::stri_split_lines1(task_df$description[1])
-#
+
 # extract_start_date = function(x) {
 #
 # }

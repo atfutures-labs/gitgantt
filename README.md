@@ -1,0 +1,60 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+gitgantt
+========
+
+<!-- badges: start -->
+<!-- badges: end -->
+The goal of gitgantt is to make it easier to create project plans via GitHub.
+
+Problem: you need to show your plan in a report or funding application, but all the planned work is stashed in GitHub issues.
+
+Solution: add lines containing `GanttStart:` and `GanttDue:` to your issues and use **gitgantt** to convert them into an attractive Gantt chart in a single line of code!
+
+``` r
+library(gitgantt)
+# gg_gantt(repo = "")
+```
+
+Installation
+------------
+
+<!-- You can install the released version of gitgantt from [CRAN](https://CRAN.R-project.org) with: -->
+<!-- ``` r -->
+<!-- install.packages("gitgantt") -->
+<!-- ``` -->
+Install the development version from [GitHub](https://github.com/) with:
+
+``` r
+remotes::install_github("robinlovelace/gitgantt")
+```
+
+How it works
+------------
+
+The packages uses [`gh`]() to extract issue data from GitHub and code inspired by [jennybc/analyze-github-stuff-with-r](https://github.com/jennybc/analyze-github-stuff-with-r) to clean the data into a `tibble`:
+
+``` r
+issue_list = gg_issue_list(owner = "ATFutures", repo = "who3")
+#> 5 issues returned for the repo who3
+issue_df = gg_issue_df(issue_list)
+issue_df
+#> # A tibble: 5 x 7
+#>   number title           body          start_date due_date state created_at
+#>    <int> <chr>           <chr>         <chr>      <chr>    <chr> <date>    
+#> 1      5 Adaptation Man… "GanttStart:… 2019-09-01 2019-10… open  2019-05-29
+#> 2      4 User Manual     ""            <NA>       <NA>     open  2019-05-29
+#> 3      3 HEAT Integrati… Including tr… <NA>       <NA>     open  2019-05-29
+#> 4      2 scenario devel… ""            <NA>       <NA>     open  2019-05-29
+#> 5      1 Demo translati… ""            <NA>       <NA>     open  2018-12-07
+```
+
+Thanks
+------
+
+This project is inspired by and builds on:
+
+-   Excellent demonstration of using `gh` in the [analyze-github-stuff-with-r](https://github.com/jennybc/analyze-github-stuff-with-r) by Jenny Bryan
+-   The [GanttLab](https://www.ganttlab.org/) project, which initially inspired this effort and defined the `GanttStart:` convention
+-   The [`gh-issues-gantt`](https://github.com/neyric/gh-issues-gantt) JavaScript package, which in turn builds on [jQuery.Gantt](http://taitems.github.com/jQuery.Gantt/) (raising the possibility for using this for the visualisation)
+-   The [`gh`](https://github.com/r-lib/gh) R package, an interface GitHub's API
