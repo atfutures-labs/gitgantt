@@ -61,3 +61,4 @@ This project is inspired by and builds on:
 - The [GanttLab](https://www.ganttlab.org/) project, which initially inspired this effort and defined the `GanttStart: ` convention
 - The [`gh-issues-gantt`](https://github.com/neyric/gh-issues-gantt) JavaScript package, which in turn builds on [jQuery.Gantt](http://taitems.github.com/jQuery.Gantt/) (raising the possibility for using this for the visualisation)
 - The [`gh`](https://github.com/r-lib/gh) R package, an interface GitHub's API
+- The [`vistime`](https://github.com/daattali/timevis) R package for creating interactive Gantt charts
