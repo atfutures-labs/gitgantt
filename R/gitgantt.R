@@ -73,9 +73,11 @@ gg_due_date = function(issue_body) {
 #' @param issue_df A data frame created by `gg_issue_df()`
 #' @export
 #' @examples
+#' gg_timevis(owner = "robinlovelace", repo = "gitgantt")
+#' \donttest{
 #' issue_df = gg_issue_df(gg_issue_list("ATFutures", "who3"))
 #' gg_timevis(issue_df)
-#' gg_timevis(owner = "ATFutures", repo = "who3")
+#' }
 gg_timevis = function(issue_df = NULL, owner, repo) {
   if(is.null(issue_df)) {
     issue_df = gg_issue_df(owner = owner, repo = repo)
@@ -92,7 +94,7 @@ gg_timevis = function(issue_df = NULL, owner, repo) {
   g = tibble::tibble(
     id = 1:nrow(timevis_df),
     # content = timevis_df$content
-    content = 1
+    content = 1:nrow(timevis_df)
     )
   timevis::timevis(data = timevis_df, groups = g)
 }

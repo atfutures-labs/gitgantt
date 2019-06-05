@@ -17,7 +17,9 @@ gg_timevis(issue_df = NULL, owner, repo)
 Create interactive visualisation of GitHub issues
 }
 \examples{
+gg_timevis(owner = "robinlovelace", repo = "gitgantt")
+\donttest{
 issue_df = gg_issue_df(gg_issue_list("ATFutures", "who3"))
 gg_timevis(issue_df)
-gg_timevis(owner = "ATFutures", repo = "who3")
+}
 }

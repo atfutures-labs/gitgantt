@@ -50,17 +50,18 @@ to clean the data into a `tibble`:
 
 ``` r
 issue_list = gg_issue_list(owner = "ATFutures", repo = "who3")
-#> 5 issues returned for the repo who3
+#> 6 issues returned for the repo who3
 issue_df = gg_issue_df(issue_list)
 issue_df
-#> # A tibble: 5 x 7
+#> # A tibble: 6 x 7
 #>   number title         body          start_date due_date   state created_at
 #>    <int> <chr>         <chr>         <date>     <date>     <chr> <date>    
-#> 1      5 Adaptation M… "GanttStart:… 2019-10-01 2019-11-01 open  2019-05-29
-#> 2      4 User Manual   "GanttStart:… 2019-09-01 2019-10-01 open  2019-05-29
-#> 3      3 HEAT Integra… "Including t… 2019-08-01 2019-09-01 open  2019-05-29
-#> 4      2 scenario dev… "GanttStart:… 2019-07-01 2019-08-01 open  2019-05-29
-#> 5      1 Demo transla… ""            NA         NA         open  2018-12-07
+#> 1      6 Add Gantt ch… ""            NA         NA         clos… 2019-06-05
+#> 2      5 Adaptation M… "GanttStart:… 2019-10-01 2019-11-01 open  2019-05-29
+#> 3      4 User Manual   "GanttStart:… 2019-09-01 2019-10-01 open  2019-05-29
+#> 4      3 HEAT Integra… "Including t… 2019-08-01 2019-09-01 open  2019-05-29
+#> 5      2 scenario dev… "GanttStart:… 2019-07-01 2019-08-01 open  2019-05-29
+#> 6      1 Demo transla… ""            NA         NA         open  2018-12-07
 ```
 
 ## Thanks
