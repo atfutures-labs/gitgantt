@@ -12,5 +12,6 @@ Imports:
     gh,
     stringi,
     purrr,
-    tibble
+    tibble,
+    timevis
 RoxygenNote: 6.1.1

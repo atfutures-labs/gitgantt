@@ -27,8 +27,8 @@ gg_issue_df = function(issue_list) {
         number = purrr::map_int(issue_list, "number"),
         title = purrr::map_chr(issue_list, "title"),
         body = purrr::map_chr(issue_list, "body"),
-        start_date = gg_start_date(body),
-        due_date = gg_due_date(body),
+        start_date = as.Date(gg_start_date(body)),
+        due_date = as.Date(gg_due_date(body)),
         state = purrr::map_chr(issue_list, "state"),
         created_at = as.Date(purrr::map_chr(issue_list, "created_at"))
   )
@@ -63,7 +63,28 @@ gg_start_date = function(issue_body) {
 gg_due_date = function(issue_body) {
   purrr::map_chr(issue_body, gg_extract_dates, pattern = "GanttDue: ")
 }
-
+#' Create interactive visualisation of GitHub issues
+#' @inheritParams gg_issue_list
+#' @param issue_df A data frame created by `gg_issue_df()`
+#' @export
+#' @examples
+#' issue_df = gg_issue_df(gg_issue_list("ATFutures", "who3"))
+#' gg_timevis(issue_df)
+gg_timevis = function(issue_df = NULL, owner, repo) {
+  n = names(issue_df)
+  n_new = stringr::str_replace_all(n, c("start_date" = "start" , "due_date" = "end", "title" = "content"))
+  timevis_df = issue_df
+  names(timevis_df) = n_new
+  timevis_df = timevis_df[!is.na(timevis_df$start), ]
+  timevis_df = timevis_df[order(timevis_df$start, decreasing = FALSE), ]
+  timevis_df$id = 1:nrow(timevis_df)
+  timevis_df$order = nrow(timevis_df):1
+  timevis_df$groups = 1:nrow(timevis_df)
+  g = tibble::tibble(id = 1:nrow(timevis_df), content = timevis_df$content)
+  timevis::timevis(data = timevis_df
+                   # , groups = g
+                   )
+}
 # extract_start_date = function(x) {
 #
 # }

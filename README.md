@@ -40,13 +40,13 @@ issue_list = gg_issue_list(owner = "ATFutures", repo = "who3")
 issue_df = gg_issue_df(issue_list)
 issue_df
 #> # A tibble: 5 x 7
-#>   number title           body          start_date due_date state created_at
-#>    <int> <chr>           <chr>         <chr>      <chr>    <chr> <date>    
-#> 1      5 Adaptation Man… "GanttStart:… 2019-09-01 2019-10… open  2019-05-29
-#> 2      4 User Manual     ""            <NA>       <NA>     open  2019-05-29
-#> 3      3 HEAT Integrati… Including tr… <NA>       <NA>     open  2019-05-29
-#> 4      2 scenario devel… ""            <NA>       <NA>     open  2019-05-29
-#> 5      1 Demo translati… ""            <NA>       <NA>     open  2018-12-07
+#>   number title          body           start_date due_date state created_at
+#>    <int> <chr>          <chr>          <chr>      <chr>    <chr> <date>    
+#> 1      5 Adaptation Ma… "GanttStart: … 2019-10-01 2019-11… open  2019-05-29
+#> 2      4 User Manual    "GanttStart: … 2019-09-01 2019-10… open  2019-05-29
+#> 3      3 HEAT Integrat… "Including tr… 2019-08-01 2019-09… open  2019-05-29
+#> 4      2 scenario deve… "GanttStart: … 2019-07-01 2019-08… open  2019-05-29
+#> 5      1 Demo translat… ""             <NA>       <NA>     open  2018-12-07
 ```
 
 Thanks
