@@ -46,7 +46,7 @@ gg_issue_df = function(issue_list) {
 #' gg_start_date(issue_body)
 #' gg_due_date(issue_body)
 gg_extract_dates = function(issue_body, pattern = "GanttStart: |GanttDue: ") {
-  body_lines = stringi::stri_split_lines1(issue_body)
+  body_lines = unlist(stringr::str_split(issue_body, "\r\n", n = Inf))
   body_date_strings = body_lines[grepl(pattern = pattern, body_lines)]
   if(length(body_date_strings) == 0) {
     return(NA)

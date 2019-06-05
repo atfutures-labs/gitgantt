@@ -10,7 +10,7 @@ Encoding: UTF-8
 LazyData: true
 Imports: 
     gh,
-    stringi,
+    stringr,
     purrr,
     tibble,
     timevis
